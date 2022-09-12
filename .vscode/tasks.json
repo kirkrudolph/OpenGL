@@ -1,0 +1,84 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++ build active file",
+			"command": "/usr/bin/clang++",
+			"args": [
+				"-std=c++11",
+				"-fdiagnostics-color=always",
+				"-Wall",
+				"-g",
+				"-I${workspaceFolder}/inc",
+				"-L${workspaceFolder}/lib",
+				"-lglfw3",
+				"${workspaceFolder}/src/*.cpp",
+				"-o",
+				"${workspaceFolder}/build/app",
+				"-framework",
+				"OpenGL",
+				"-framework",
+				"Cocoa",
+				"-framework",
+				"IOKit",
+				"-framework",
+				"CoreVideo",
+				"-framework",
+				"CoreFoundation",
+				"-Wno-deprecated"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/clang++"
+		},
+		{
+			"label": "run",
+			"type": "shell",
+			"command": "./build/app",
+			"problemMatcher": []
+		}
+	]
+}
+/*
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++-11 build active file",
+			"command": "/usr/local/bin/g++-11",
+			"args": [
+				"-std=c++11",
+				"-fdiagnostics-color=always",
+				"-Wall",
+				"-g",
+				"-I${workspaceFolder}/inc",
+				"-L${workspaceFolder}/lib",
+				"${workspaceFolder}/src/*.cpp",
+				"-o",
+				"${workspaceFolder}/build/app"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/local/bin/g++-11"
+		}
+	]
+}
+*/
