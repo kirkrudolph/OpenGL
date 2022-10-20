@@ -1,13 +1,35 @@
-# GLFW App
-
-Option 1 (see kicad)
-- wxWidgets
+# OpenGL
 
 Option 2 (GLFW)
 
-- GLFW: Window, run loop, process input, etc.
-- GLAD or GLEW: Manages function pointers for OpenGL
 
+
+## What is OpenGL
+
+OpenGL is just a specification. Not a Library.
+GPU manufacturer's drivers include OpenGL implement.
+- Not open source.
+- Cross platform (not optimal, native is usualy more powerful/better)
+- Easier to learn (Vulcan is an alternative but newer)
+- "Legacy" OpenGL started in 90's (think limited preset options)
+- "Modern" OpenGL has more low-level control
+    - Shader (Program that runs on GPU)
+
+## Creating a Window
+"Windowing" is very Platform specific (OS level thing)
+- Windows: win32 API
+- Linux: X11
+- Mac: ?
+
+GLFW (lightweight)
+SDL (full framework)
+wxWidgets (see KiCAD)
+
+## Modern OpenGL
+- GLFW: Window, run loop, process input, etc.
+- GLAD or GLEW: Manages function pointers for "Modern" OpenGL
+- OpenGL: Graphics API. Access GPU
+    - Alternatives to OpenGL: Direct 3D (Windows), Vulcan (Cross Platform), Metal (MacOS)
 
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
