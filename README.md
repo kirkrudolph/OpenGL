@@ -1,5 +1,14 @@
 # GLFW App
 
+Option 1 (see kicad)
+- wxWidgets
+
+Option 2 (GLFW)
+
+- GLFW: Window, run loop, process input, etc.
+- GLAD or GLEW: Manages function pointers for OpenGL
+
+
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
 
