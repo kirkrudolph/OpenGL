@@ -107,6 +107,11 @@ Uniforms are a way to get data from CPU into shader for use as a variable
     - Very enviornment dependant. Probably need to benchmark if needing every bit of performance.
 We'll use multiple vaos.
 
+## 13 Vertex and Inex Buffer Classes
+- Reorganizing code.
+
+## 14 Buffer Layout Abstraction
+- 
 
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
