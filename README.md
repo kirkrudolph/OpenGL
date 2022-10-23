@@ -67,7 +67,17 @@ Two primary types: Vertex, Fragment (pixel) shaders. But many other types: Geome
 - Really good graphics can be 1000s of lines of code in a shader.
 - Game engines generate shaders on the fly based on settings, context, etc.
 
-## 7. Writing a Shader in OpenGL
+## 7 & 8 Writing a Shader in OpenGL
+- Added shader code.
+- Import Shader code from other file.
+
+## 9 Index Buffers
+- Triangles are the GPUs basic building block
+- Example: draw a square with 4 unique points instead of 6 points (3 for triangle 1 and 3 for triangle 2)
+- Vertex buffer, index buffer, DrawElements is what's used 90% of the time (even AAA games).
+
+# 10 Dealing With Errors
+- 
 
 
 Notes:

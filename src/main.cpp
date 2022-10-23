@@ -88,18 +88,34 @@ void legacyOpenGL(void){
 }
 
 void modernOpenGL(void){
-    float positions[6] = {
-        -0.5f,-0.5f,
-         0.0f, 0.5f,
-         0.5f,-0.5f};
 
+    // Data
+    float positions[] = {
+        -0.5f, -0.5f,
+         0.5f, -0.5f,
+         0.5f,  0.5f,
+        -0.5f,  0.5f};
+
+    // Data buffer
     unsigned int buffer;
-    
-    glGenBuffers(1,&buffer);                                                        // Number of buffers, buffer ID
-    glBindBuffer(GL_ARRAY_BUFFER,buffer);                                           // Select buffer
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);    // Load data
+    glGenBuffers(1,&buffer);                                                            // Number of buffers, buffer ID
+    glBindBuffer(GL_ARRAY_BUFFER,buffer);                                               // Select buffer
+    glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float), positions, GL_STATIC_DRAW);    // Load data
+
+    // Attributes
     glEnableVertexAttribArray(0); 
-    glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE, sizeof(float)*2, 0);               // Tell OpenGL how to interpret data
+    glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE, sizeof(float)*2, 0);                   // Tell OpenGL how to interpret data
+
+    // Index
+    unsigned int indices[] = {
+        0, 1, 2,
+        2, 3, 0};
+    
+    // Index buffer
+    unsigned int ibo;                                                                               // index buffer object
+    glGenBuffers(1,&ibo);                                                                           // Number of buffers, buffer ID
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,ibo);                                                      // Select buffer
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);       // Load data
 
     // Vertex Shader
     ShaderProgramSource source = ParseShader("shaders/Basic.shader");
@@ -145,7 +161,7 @@ int main(void)
 
         // Draw triangle
         //legacyOpenGL();
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
