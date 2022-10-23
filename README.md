@@ -93,7 +93,19 @@ Uniforms are a way to get data from CPU into shader for use as a variable
 - attributes are set per vertex
 
 ## 12 Vertex Arrays
-
+- Unique to OpenGL (doesn't exist in other graphic APIs)
+- Binds vertex buffer with layout of data in that buffer
+- If you use "core" profile, you have to make a vertex array object (vao).
+- If you use the "compatability" profile, there is a default vao bound and setup already for use.
+- Two Options:
+    1. One global vao. Create a "default" vertex array object (vao) and leave it bound for the duration of the program. Then you can bind the vertex buffer and specify the vertex layout every time before drawing. Basically
+    the same as using the compatability profile.
+    2. One vao for each object. For every piece of geometry, create a vao. When it comes time to draw, bind a new vao every time.
+- Which is better? 
+    - Nvidia had a paper that "One vao is better" (performance wise)
+    - OpenGL recommends using multiple vao's.
+    - Very enviornment dependant. Probably need to benchmark if needing every bit of performance.
+We'll use multiple vaos.
 
 
 Notes:
