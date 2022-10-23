@@ -87,6 +87,13 @@ Standard Workflow
 Created macros for error checking.
 
 ## 11 Uniforms in OpenGL
+Uniforms are a way to get data from CPU into shader for use as a variable
+- alternative to attributes already used
+- uniforms are set per draw (i.e. can't use this to make two triangles different colors)
+- attributes are set per vertex
+
+## 12 Vertex Arrays
+
 
 
 Notes:

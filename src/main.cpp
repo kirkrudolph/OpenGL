@@ -104,7 +104,7 @@ void legacyOpenGL(void){
         glEnd();
 }
 
-void modernOpenGL(void){
+int modernOpenGL(void){
 
     // Data
     float positions[] = {
@@ -137,7 +137,12 @@ void modernOpenGL(void){
     // Vertex Shader
     ShaderProgramSource source = ParseShader("shaders/Basic.shader");
     unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource);
-    glUseProgram(shader);
+    GLCALL(glUseProgram(shader));
+
+    GLCALL(int location = glGetUniformLocation(shader,"u_Color"));
+    ASSERT(location != -1);
+
+    return location;
 }
 
 int main(void)
@@ -159,6 +164,9 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    // Sync refresh rate
+    glfwSwapInterval(1);
+
     // Init GLEW (AFTER VALID CONTEXT!!! SEE DOCS)
     if(glewInit() != GLEW_OK){
         std::cout << "Error!" << std::endl;
@@ -168,7 +176,10 @@ int main(void)
     std::cout << glGetString(GL_VERSION) << std::endl;
 
     // Because data isn't changing every time, create data once.
-    modernOpenGL();
+    int location = modernOpenGL();
+
+    float r = 0.0f;
+    float increment = 0.05f;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -178,7 +189,15 @@ int main(void)
 
         // Draw triangle
         //legacyOpenGL();
+        GLCALL(glUniform4f(location, r, 0.3f, 0.5f, 1.0f));
         GLCALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+
+        if (r > 1.0f ){
+            increment = -0.05f;
+        } else if (r < 0.0f){
+            increment = 0.05f;
+        }
+        r+=increment;
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
