@@ -7,8 +7,10 @@
 #include <sstream>
 
 #include "Renderer.hpp"
+
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
+#include "VertexArray.hpp"
 
 struct ShaderProgramSource{
     std::string VertexSource;
@@ -126,31 +128,25 @@ int main(void)
     // Print version
     std::cout << glGetString(GL_VERSION) << std::endl;
 
-        // Data
+    // Data
     float positions[] = {
         -0.5f, -0.5f,
          0.5f, -0.5f,
          0.5f,  0.5f,
         -0.5f,  0.5f};
 
-    // Generate and bind Vertex Array Object
-    unsigned int vao;
-    GLCALL(glGenVertexArrays(1,&vao));
-    GLCALL(glBindVertexArray(vao));
-
-    // Data buffer
-    VertexBuffer vb(positions, 4*2*sizeof(float));
-
-
-    // Attributes
-    GLCALL(glEnableVertexAttribArray(0)); 
-    GLCALL(glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE, sizeof(float)*2, 0));                   // Tell OpenGL how to interpret data
-
     // Index
     unsigned int indices[] = {
         0, 1, 2,
         2, 3, 0};
 
+    VertexArray va;
+    VertexBuffer vb(positions, 4*2*sizeof(float));
+
+    VertexBufferLayout layout;
+    layout.Push<float>(2);
+    va.AddBuffer(vb, layout);
+    
     // Index buffer
     IndexBuffer ib(indices, 6);
 
@@ -162,6 +158,7 @@ int main(void)
     // Send color info to shader
     GLCALL(int location = glGetUniformLocation(shader,"u_Color"));
     ASSERT(location != -1);
+    GLCALL(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
 
     // zero everything for so we're demoing calls in the loop.
     GLCALL(glBindVertexArray(0));
@@ -184,9 +181,9 @@ int main(void)
         GLCALL(glUseProgram(shader));
         GLCALL(glUniform4f(location, r, 0.3f, 0.5f, 1.0f));
 
-        GLCALL(glBindVertexArray(vao));
+        va.Bind();
         ib.Bind();
-        
+
         GLCALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
         if (r > 1.0f ){
