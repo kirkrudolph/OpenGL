@@ -76,8 +76,17 @@ Two primary types: Vertex, Fragment (pixel) shaders. But many other types: Geome
 - Example: draw a square with 4 unique points instead of 6 points (3 for triangle 1 and 3 for triangle 2)
 - Vertex buffer, index buffer, DrawElements is what's used 90% of the time (even AAA games).
 
-# 10 Dealing With Errors
-- 
+## 10 Dealing With Errors
+`glGetError` - fully compatible because it's been around from the begining
+`glDebugMessageCallback` - newer function (only available in v4.3+)
+Standard Workflow
+1. Clear all errors (call in a loop to clear all errors)
+2. Call GL function
+3. Call glGetError again
+
+Created macros for error checking.
+
+## 11 Uniforms in OpenGL
 
 
 Notes:

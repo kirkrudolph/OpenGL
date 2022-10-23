@@ -6,6 +6,23 @@
 #include <string>
 #include <sstream>
 
+// Macros
+#define ASSERT(x) if (!(x)) __builtin_debugtrap();
+#define GLCALL(x) GLClearError(); x; ASSERT(GLLogCall(#x, __FILE__, __LINE__))
+
+
+static void GLClearError(){
+    while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall(const char* function, const char* file, int line){
+    while (GLenum error = glGetError()){
+        std::cout << "[OpenGL Error]: " << error << " " << function << " " << file << ":" << line << std::endl;
+        return false;
+    }
+    return true;
+}
+
 struct ShaderProgramSource{
     std::string VertexSource;
     std::string FragmentSource;
@@ -161,7 +178,7 @@ int main(void)
 
         // Draw triangle
         //legacyOpenGL();
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        GLCALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
