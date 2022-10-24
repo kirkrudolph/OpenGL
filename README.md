@@ -110,8 +110,15 @@ We'll use multiple vaos.
 ## 13 Vertex and Inex Buffer Classes
 - Reorganizing code.
 
-## 14 Buffer Layout Abstraction
-- 
+## 14 Vertex Array Abstraction
+- Lots of code changes
+
+## 15 Shader Abstraction
+- Shader generation at run-time is common.
+- Abstracting shaders can be very, very complex.
+
+## 16 Renderer
+
 
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
