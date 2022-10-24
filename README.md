@@ -1,5 +1,17 @@
 # OpenGL
 
+## Build
+`Cmd+Shift+B`: Execute default build task in VSCode
+
+## Run
+`Cntr+Alt+T`: Run executable
+
+or
+
+```
+./build/app
+```
+
 ## 1. Welcome to OpenGL
 
 OpenGL is:
@@ -148,25 +160,38 @@ We'll use multiple vaos.
 
 - Send data from vertex shader to fragment shader with a "vary"
 
+## 18 Blending in OpenGL
+
+## 19 Math in OpenGL
+
+## 20 Projection Matrices
+
+## 21 Model View Projection Matrices
+
+## 22 ImGui in OpenGL
+
+## 23 Rendering Multiple Objects
+
+## 24 Test Framework
+
+## 25 Creating Tests
+
+## 26 Creating a Texture Test
+
+## 27 Faster Uniforms
+
+## 28 Batch Rendering - Introduction
+
+## 29 Batch Rendering - Colors
+
+## 30 Batch Rendering - Textures
+
+## 31 Batch Rendering - Dynamic Geometry
+
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
 
-
-
-## Build
-`Cmd+Shift+B`: Execute default build task in VSCode
-
-## Run
-`Cntr+Alt+T`: Run executable
-
-or
-
-```
-./build/app
-```
-
 ## Resources
-
 
 - [GLFW Docs](https://www.glfw.org/documentation.html)
 - [The Cherno](https://www.youtube.com/watch?v=OR4fNpBjmq8&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=2)
