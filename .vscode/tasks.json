@@ -17,6 +17,7 @@
 				"-lglfw3",
 				"-lGLEW",
 				"${workspaceFolder}/src/*.cpp",
+				"${workspaceFolder}/src/vendor/stb_image/*.c",
 				"-o",
 				"${workspaceFolder}/build/app",
 				"-framework",

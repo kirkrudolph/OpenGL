@@ -13,6 +13,7 @@
 #include "IndexBuffer.hpp"
 #include "VertexArray.hpp"
 #include "Shader.hpp"
+#include "Texture.hpp"
 
 void legacyOpenGL(void){
         glBegin(GL_TRIANGLES);
@@ -58,20 +59,24 @@ int main(void)
 
     // Data
     float positions[] = {
-        -0.5f, -0.5f,
-         0.5f, -0.5f,
-         0.5f,  0.5f,
-        -0.5f,  0.5f};
+        -0.5f, -0.5f, 0.0f, 0.0f,
+         0.5f, -0.5f, 1.0f, 0.0f,
+         0.5f,  0.5f, 1.0f, 1.0f,
+        -0.5f,  0.5f, 0.0f, 1.0f};
 
     // Index
     unsigned int indices[] = {
         0, 1, 2,
         2, 3, 0};
+    
+    GLCALL(glEnable(GL_BLEND));
+    GLCALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
     VertexArray va;
-    VertexBuffer vb(positions, 4*2*sizeof(float));
+    VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
     VertexBufferLayout layout;
+    layout.Push<float>(2);
     layout.Push<float>(2);
     va.AddBuffer(vb, layout);
     
@@ -81,9 +86,12 @@ int main(void)
     // Vertex Shader
     Shader shader("shaders/Basic.shader");
     shader.Bind();
-
-    // Send color info to shader
     shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
+
+    // Add Texture
+    Texture texture("textures/random.png");
+    texture.Bind();
+    shader.SetUniform1i("u_Texture", 0);
 
     // zero everything for so we're demoing calls in the loop.
     va.Unbind();

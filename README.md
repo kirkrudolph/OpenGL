@@ -129,6 +129,25 @@ We'll use multiple vaos.
 - Most game engines use their own texture format
 - Use library to give file path and recieve a buffer of rgba pixels
 
+- OpenGL has multiple "slots" to bind textures at the same time.
+    - modern GPUs have ~32 texture slots
+    - mobile (Apple, Android) might have like ~8 texture slots
+    - can ask OpenGL for the number on the platform
+
+- OpenGL expects texture pixels to start at the bottom left (not top left)
+- Depends on texture formats but png starts at top left.
+
+- Resampling/scaling/filtering images is a big deal. Lots of settings and options.
+- Internal format is how OpenGL stores texture data.
+- Format is the data you're providing OpenGL with
+
+- Need to tell shader which texture slot to sample from
+- Integer Uniform "sampler slot"
+
+- Need to add texture coordinates
+
+- Send data from vertex shader to fragment shader with a "vary"
+
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
 
