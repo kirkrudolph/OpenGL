@@ -118,7 +118,16 @@ We'll use multiple vaos.
 - Abstracting shaders can be very, very complex.
 
 ## 16 Renderer
+- Contains draw call.
+- Debate of should multiple instances be allowed.
 
+## 17 Textures
+- Basic Idea: Image from photoshop, paint, etc. on the surface in the application.
+- Can be as complicated as adjusting textures via lighting effects (I think he's refering to ray casting).
+
+1. Load image into CPU memory. (this example uses a .png)
+- Most game engines use their own texture format
+- Use library to give file path and recieve a buffer of rgba pixels
 
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
