@@ -161,10 +161,24 @@ We'll use multiple vaos.
 - Send data from vertex shader to fragment shader with a "vary"
 
 ## 18 Blending in OpenGL
+- How to render something that is fully or partially transparent
+- Blending determins how we combine our output color with what is already in the buffer
+- Output = the color output from the fragment shader (known as the source)
+- Target buffer = buffer that the fragment shader is drawing to (known as destination)
+- Three ways to control:
+1. glEnable(GL_BLEND), glDisable(GL_BLEND)
+2. glBlendFunc(src, dest)
+3. glBlendEquation(mode)
 
 ## 19 Math in OpenGL
+- Vectors can be direction and/or position in 2D, 3D, 4D space
+- `glm` is a good library for OpenGL. Efficient ordering. Header only.
+- Model View Projection (MVP) matrix via shader
 
 ## 20 Projection Matrices
+- Projection maps to [-1, 1] regardless of screen size
+- Orthographic Projection: Usually 2D, UI
+- Perspective Projection: Usually 3D, 1st person shooter
 
 ## 21 Model View Projection Matrices
 

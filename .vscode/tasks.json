@@ -10,6 +10,8 @@
 				"-fdiagnostics-color=always",
 				"-Wall",
 				"-g",
+				"-I${workspaceFolder}/src/vendor",
+				"-I${workspaceFolder}/src/vendor/glm-0.9.9.8",
 				"-I${workspaceFolder}/libraries/glfw-3.3.8/inc",
 				"-I${workspaceFolder}/libraries/glew-2.1.0/inc",
 				"-L${workspaceFolder}/libraries/glfw-3.3.8/lib",
