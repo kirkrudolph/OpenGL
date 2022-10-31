@@ -191,7 +191,10 @@ We'll use multiple vaos.
 - OpenGL Matrix multiplication is right to left because of the way it expects it in the shader
 
 ## 22 ImGui in OpenGL
-
+- GUI library
+- Can be used with OpenGL, Direct X, or any rendering API. 
+- Draw UI (buttons, text fields, color pickers, windows, debug, real-time rendering, etc.)
+- Lightweight Qt or wpf alternative.
 
 ## 23 Rendering Multiple Objects
 
