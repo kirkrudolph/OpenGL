@@ -181,8 +181,17 @@ We'll use multiple vaos.
 - Perspective Projection: Usually 3D, 1st person shooter
 
 ## 21 Model View Projection Matrices
+- Model View Projections (MVP) Matrix
+- Each is a 4x4 matrix.
+- View Matrix is "view of camera"
+- Model is the vertex of the object we're drawing
+- Projection (see 20) maps into screen space
+- Translation, Rotation, Scale (TRS)
+- Multiplication is in reverse order. Memory layout is column major.
+- OpenGL Matrix multiplication is right to left because of the way it expects it in the shader
 
 ## 22 ImGui in OpenGL
+
 
 ## 23 Rendering Multiple Objects
 
