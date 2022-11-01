@@ -198,7 +198,18 @@ We'll use multiple vaos.
 - Super cool. Not that hard to implement. Very good examples.
 
 ## 23 Rendering Multiple Objects
--
+- Multiple ways to do it.
+1. Have a second index buffer
+2. Use a different MVP matrix on the same data.
+
+Here, we used two MVP matrix transforms because we only have one object and just want to render it twice.
+
+Not the best way for everything. Don't create a 2D tile layout via 1000 draw calls in a for loop. Instead, a tile map could be created in a single draw call via batching. Batching shoves all indexes into a single vertex buffer. Then change vertex positions in the single verterx buffer and render everything all in one go. Much faster than binding a shader, changing the uniform, and a draw call for a thousand individual tiles.
+
+2D rendering, batching is a must. 
+3D rendering of objects that are super complex, the method used here probably makes sense.
+
+Material = shader + uniforms
 
 ## 24 Test Framework
 

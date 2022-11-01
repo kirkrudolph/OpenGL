@@ -18,9 +18,9 @@ void Renderer::Clear() const{
 }
 
 void Renderer::Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const{
-    shader.Bind();
-    va.Bind();
-    ib.Bind();
+    shader.Bind();  // Binds program (shader) to GPU. Tells GPU what to do.
+    va.Bind();      // Bind vertex array. The data.
+    ib.Bind();      // Bind index buffer. How to assemble individual vertexes.
     GLCALL(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
 
