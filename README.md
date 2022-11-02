@@ -212,8 +212,11 @@ Not the best way for everything. Don't create a 2D tile layout via 1000 draw cal
 Material = shader + uniforms
 
 ## 24 Test Framework
+- Goal is to clean up main function.
+- Use ImGui to launch, execute, and close mini examples
 
 ## 25 Creating Tests
+- Creating a test menu.
 
 ## 26 Creating a Texture Test
 
