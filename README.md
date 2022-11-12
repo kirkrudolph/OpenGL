@@ -219,6 +219,7 @@ Material = shader + uniforms
 - Creating a test menu.
 
 ## 26 Creating a Texture Test
+- Added back all code needed to render textures in a new test option.
 
 ## 27 Faster Uniforms
 
