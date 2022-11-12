@@ -35,8 +35,8 @@ namespace test {
     // Vertex Buffer
     m_VertexBuffer = std::make_unique<VertexBuffer>(positions, 4 * 4 * sizeof(float));
     VertexBufferLayout layout;
-    layout.Push<float>(2);
-    layout.Push<float>(2);
+    layout.Push<float>(2); // x, y
+    layout.Push<float>(2); // 
     m_VAO->AddBuffer(*m_VertexBuffer, layout);
 
     // Index buffer

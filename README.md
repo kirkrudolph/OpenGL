@@ -289,6 +289,9 @@ Downside
 - Can't use transform to set position. Has to be done in vertex buffer.
 
 ## 29 Batch Rendering - Colors
+- Colors, Texture, Dynamically change quads being drawn, etc.
+
+Add color attribute to vertex buffer (instead of just positions).
 
 
 

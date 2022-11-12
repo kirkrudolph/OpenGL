@@ -23,6 +23,7 @@
 
 #include "tests/TestClearColor.hpp"
 #include "tests/TestTexture2D.hpp"
+#include "tests/TestBatch2D.hpp"
 
 void legacyOpenGL(void){
         glBegin(GL_TRIANGLES);
@@ -91,6 +92,7 @@ int main(void)
     // Register tests
     testMenu->RegisterTest<test::TestClearColor>("Clear Color");
     testMenu->RegisterTest<test::TestTexture2D>("2D Texture");
+    testMenu->RegisterTest<test::TestBatch2D>("2D Batch");
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
