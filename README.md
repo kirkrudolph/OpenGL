@@ -241,8 +241,56 @@ Today, add a quick and dirty hack to speed things up a bit.
     - Only uses `glGetUniformLocation` when uniform isn't already in buffer.
 
 ## 28 Batch Rendering - Introduction
+- How to render more than one piece of geometry in a single draw call
+- To date:
+    - Build vertex buffer of vertexies
+    - An index buffer with indices
+    - Render with `gldrawelements`
+    - Repeat for any object (ex new square or rectagnle)
+- Can reuse the same vertex and index buffer if geometry doesn't change
+    - Use uniform matrix in vertex shader to position/transform that piece of geometry
+- What happens if we want to render a lot of things? Huge amount of geometry?
+- This video specifically for 2D batching. Ignoring 3D batching.
+- How to render many 2D rectangles? 
+
+Example:
+    - 2D top down RPG. World is made of tiles (think pokemon)
+        - Poor performance if 100's or 1000's of individual draw calls.
+        - GPU can't keep up.
+        - Modern desktop with dedicated GPUs can do 1000's of draw calls.
+        - Bigger issue for old hardware or mobile.
+    - Particle system
+        - Fire particles
+        - Smoke particles
+        - [Example video](https://www.youtube.com/watch?v=qITIvVV6BHk): Individual quads with transforms
+    - UI rendering
+        - Text on the screen.
+        - Quest journal entry with paragraphs of text.
+        - Each character is a seperate texture quad.
+        - 1000's of text characters.
+
+Batch rendering enables above examples without huge performance hit.
+Batch together all the geometry into a single vertex/index buffer and draw once. (instead of everything individual)
+Colors would also exist in vertex buffer
+
+Vertex Array                                    -----
+- Vertex Buffer -> 4 Vertices [0,1,2,3]         |  /|
+- Index Buffer -> 6 Indices   [0,1,2;0,2,3]     |/  |
+- Transform to make two.                        -----
+
+Batched Vertex Array                            -----   -----
+- Vertex Buffer -> 8 Vertices   [0:7]           |  /|   |  /|
+- Index Buffer -> 12 Indices    []              |/  |   |/  |
+                                                -----   -----
+
+Upside
+- Fast
+Downside
+- Can't use transform to set position. Has to be done in vertex buffer.
 
 ## 29 Batch Rendering - Colors
+
+
 
 ## 30 Batch Rendering - Textures
 
