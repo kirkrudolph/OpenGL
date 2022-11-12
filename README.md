@@ -222,6 +222,23 @@ Material = shader + uniforms
 - Added back all code needed to render textures in a new test option.
 
 ## 27 Faster Uniforms
+- Instead of retrieving uniforms from openGL every time we need to set a uniform
+- Many things we can do to retain that location
+- Once we've compiled the shader and that object lives on the GPU
+- Shader in the GPU is aware of all the valid uniforms within it
+- No reason to continously ask GPU "where is my uniform?"
+- Any OpenGL call is going to be slower than any C++ style call
+- Talk about Caching the uniform
+
+What typically happens:
+- Shader is compiled
+- Game/Render engine reads shader source code
+- Determines what to do with shader. Extract data. Find atributes, find uniforms
+
+Today, add a quick and dirty hack to speed things up a bit.
+- Actually, this was already done in the episode where we created the shader class.
+- See `Shader.cpp -> GetUniformLocation` function.
+    - Only uses `glGetUniformLocation` when uniform isn't already in buffer.
 
 ## 28 Batch Rendering - Introduction
 
