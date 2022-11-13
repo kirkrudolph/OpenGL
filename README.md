@@ -293,11 +293,14 @@ Downside
 
 Add color attribute to vertex buffer (instead of just positions).
 
-
-
 ## 30 Batch Rendering - Textures
+- Last few episodes were redos of earlier content.
 
 ## 31 Batch Rendering - Dynamic Geometry
+- Last few episodes were redos of earlier content.
+- Might be some info in this video that I didn't implement but might be nice. Dynamically changes fixed values.
+
+## Cherno OpenGL course finished on 11/13.
 
 Notes:
 - I installed GLFW via `brew install glfw` but instead of using the dynamic library, I'm using a static library built from CMake and the glfw source code. The headerfile is from the brew install.
